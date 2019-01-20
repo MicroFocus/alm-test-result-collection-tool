@@ -21,9 +21,9 @@ java -jar alm-test-result-collection-tool.jar [OPTIONS]...
 * **-c,--config-file <FILE>**               Configuration file location. Default is 'conf.xml' in the same directory as the tool.
 * **-h,--help**                             Show this help
 * **-o,--output-file <FILE>**               Write output to file instead of sending it to ALM Octane. File path is optional.
-                                       Default file name is 'output.xml' in the same directory as the tool.
-                                       When saving to a file, the tool saves up to 1000 runs. 
-                                       No ALM Octane URL or authentication configuration is required if you use this option.
+                                            Default file name is 'output.xml' in the same directory as the tool.
+                                            When saving to a file, the tool saves up to 1000 runs. 
+                                            No ALM Octane URL or authentication configuration is required if you use this option.
 * **-pa,--password-alm <PASSWORD>**         Password for ALM user to use for retrieving test results
 * **-paf,--password-alm-file <FILE>**       Location of file with password for ALM user
 * **-po,--password-oct <PASSWORD>**         Password for ALM Octane user
@@ -122,21 +122,21 @@ In ALM Octane, you must define API Access keys for the tool to use.
 ALM Octane Entity | ALM Octane Field   | ALM Field
 ------------------|--------------------|--------------
 Test              | Name               | If run's test name == run's test configuration name
-|||   Then => Format : AlmTestId #{testId} : {testName}
-|||   Else => Format : AlmTestId #{testId}, ConfId #{confId} : {testName} - {confName} 
-|| TestingToolType    | ALM Test type is converted to ALM Octane TestingToolType as follows :
-|||  "MANUAL=>Manual"; "LEANFT-TEST=>LeanFT"; "QUICKTEST_TEST=>UFT"; "BUSINESS-PROCESS=>BPT"
-|||   Other ALM test types are not converted.
-|| Package*           | Project Name
-|| Component*         | Domain Name
-|| Class*             | Direct test folder name
-|||
+|                 |                    |   Then => Format : AlmTestId #{testId} : {testName}
+|                 |                    |   Else => Format : AlmTestId #{testId}, ConfId #{confId} : {testName} - {confName} 
+|                 | TestingToolType    | ALM Test type is converted to ALM Octane TestingToolType as follows :
+|                 |                    |  "MANUAL=>Manual"; "LEANFT-TEST=>LeanFT"; "QUICKTEST_TEST=>UFT"; "BUSINESS-PROCESS=>BPT"
+|                 |                    |   Other ALM test types are not converted.
+|                 | Package*           | Project Name
+|                 | Component*         | Domain Name
+|                 | Class*             | Direct test folder name
+|                 |                    |
 Run               | Name               | Format : AlmTestSet #{testSetId} : {testSetName}
-|| Duration           | Run Duration
-|| ExternalReportUrl* | Td reference to run in the ALM Server (can be opened only in IE)
-|| StartedTime        | Executed Date + Executed Time => transformed to Unix time
-|| Status             | ALM run statuses 'Passed' and 'Failed' are taken as is, all other types are converted to "Skipped"
-||||-----------------
+|                 | Duration           | Run Duration
+|                 | ExternalReportUrl* | Td reference to run in the ALM Server (can be opened only in IE)
+|                 | StartedTime        | Executed Date + Executed Time => transformed to Unix time
+|                 | Status             | ALM run statuses 'Passed' and 'Failed' are taken as is, all other types are converted to "Skipped"
+|                 |                    ||-----------------
 
 * In ALM Octane, these fields are visible only in the Tests/Runs grid and not when you open a specific automated test or run. 
  
